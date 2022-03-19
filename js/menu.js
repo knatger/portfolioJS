@@ -19,3 +19,4 @@ document.addEventListener("click", (event) => {
     menu.classList.remove("menu-active");
   }
 });
+

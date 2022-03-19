@@ -1,4 +1,4 @@
-const titleDocument = document.querySelector('title')
+const titleDocument = document.querySelector("title");
 const tabButtons = document.querySelectorAll(".design-list__item");
 const tabDescriptions = document.querySelectorAll(".design__descr");
 const tabImages = document.querySelectorAll(".design-images");
@@ -13,16 +13,25 @@ const changeContent = (array, value) => {
       elem.classList.add("hidden");
     }
   });
-}
+};
+
+const changeTitle = (array, value) => {
+  array.forEach((elem) => {
+    if (elem.dataset.tabsField === value) {
+      titleDocument.textContent = elem.textContent;
+    }
+  });
+};
 
 tabButtons.forEach((tabButton) => {
   tabButton.addEventListener("click", (event) => {
-    const dataValue = tabButton.dataset.tabsHandler
+    const dataValue = tabButton.dataset.tabsHandler;
 
-    changeContent(tabDescriptions, dataValue)
-    changeContent(tabImages, dataValue)
-    changeContent(tabImage, dataValue)
-    changeContent(tabTitle, dataValue)
+    changeContent(tabDescriptions, dataValue);
+    changeContent(tabImages, dataValue);
+    changeContent(tabImage, dataValue);
+    changeContent(tabTitle, dataValue);
+    changeTitle(tabTitle, dataValue);
 
     tabButtons.forEach((btn) => {
       if (btn === event.target) {
@@ -31,6 +40,5 @@ tabButtons.forEach((tabButton) => {
         btn.classList.remove("design-list__item_active");
       }
     });
-    titleDocument.innerHTML = event.target.innerHTML;
   });
 });
